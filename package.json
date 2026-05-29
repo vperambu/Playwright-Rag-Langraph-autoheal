@@ -1,0 +1,42 @@
+{
+  "name": "playwright-cucumber-framework",
+  "version": "1.0.0",
+  "description": "Scalable Playwright + Cucumber BDD automation framework",
+  "type": "commonjs",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test npx cucumber-js tests/features/**/*.feature",
+    "test:smoke": "cross-env TEST_ENV=dev npx cucumber-js tests/features/**/*.feature --tags '@smoke'",
+    "test:regression": "cross-env TEST_ENV=dev npx cucumber-js tests/features/**/*.feature --tags '@regression'",
+    "test:api": "cross-env TEST_ENV=dev npx cucumber-js tests/features/**/*.feature --tags '@api'",
+    "test:ui": "cross-env TEST_ENV=dev npx cucumber-js tests/features/**/*.feature --tags '@ui'",
+    "test:chrome": "cross-env BROWSER=chromium npx cucumber-js tests/features/**/*.feature",
+    "test:firefox": "cross-env BROWSER=firefox npx cucumber-js tests/features/**/*.feature",
+    "test:webkit": "cross-env BROWSER=webkit npx cucumber-js tests/features/**/*.feature",
+    "test:parallel": "cross-env PARALLEL=4 npx cucumber-js tests/features/**/*.feature",
+    "test:headed": "cross-env HEADLESS=false npx cucumber-js tests/features/**/*.feature",
+    "test:mobile": "cross-env DEVICE='iPhone 13' npx cucumber-js tests/features/**/*.feature",
+    "test:env:dev": "cross-env TEST_ENV=dev npx cucumber-js tests/features/**/*.feature",
+    "test:env:qa": "cross-env TEST_ENV=qa npx cucumber-js tests/features/**/*.feature",
+    "test:env:prod": "cross-env TEST_ENV=prod npx cucumber-js tests/features/**/*.feature",
+    "ai:generate-tests": "node ./scripts/generate-ai-test-steps.js",
+    "ai:agents": "node ./scripts/simulate-ai-agents.js",
+    "ai:rag": "node ./scripts/simulate-rag-analysis.js",
+    "report": "node ./scripts/generate-report.js",
+    "allure:generate": "node ./scripts/generate-allure-summary-report.js",
+    "clean": "rimraf reports test-results allure-results",
+    "clean:allure": "rimraf allure-results"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "@playwright/test": "^1.44.0",
+    "allure-cucumberjs": "^3.0.0",
+    "allure-commandline": "^2.0.0",
+    "cross-env": "^7.0.0",
+    "multiple-cucumber-html-reporter": "^3.0.0",
+    "rimraf": "^5.0.0"
+  }
+}

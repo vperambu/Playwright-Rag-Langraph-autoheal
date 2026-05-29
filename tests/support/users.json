@@ -1,0 +1,14 @@
+{
+  "default": {
+    "username": "tester@example.com",
+    "password": "Test1234!"
+  },
+  "admin": {
+    "username": "admin@example.com",
+    "password": "Admin123!"
+  },
+  "customer": {
+    "username": "customer@example.com",
+    "password": "Customer123!"
+  }
+}
