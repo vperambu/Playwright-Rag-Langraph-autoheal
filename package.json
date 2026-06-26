@@ -24,7 +24,19 @@
     "report": "node ./scripts/generate-report.js",
     "allure:generate": "node ./scripts/generate-allure-summary-report.js",
     "clean": "rimraf reports test-results allure-results",
-    "clean:allure": "rimraf allure-results"
+    "clean:allure": "rimraf allure-results",
+    "orchestrate": "node ./scripts/run-orchestration.js",
+    "orchestrate:mock": "ORCHESTRATION_MODE=mock node ./scripts/run-orchestration.js",
+    "orchestrate:live": "ORCHESTRATION_MODE=live node ./scripts/run-orchestration.js",
+    "orchestrate:ci": "ORCHESTRATION_MODE=ci node ./scripts/run-orchestration.js",
+    "orchestrate:plan-only": "SKIP_EXECUTION=true ORCHESTRATION_MODE=mock node ./scripts/run-orchestration.js",
+    "orchestrate:clean": "rimraf orchestration/generated",
+    "orchestrate:scrum6": "TICKET_ID=SCRUM-6 ORCHESTRATION_MODE=live USE_LLM=true node ./scripts/run-orchestration.js",
+    "ollama:health": "node -e \"require('./orchestration/llm/ollama.client').healthCheck().then(r => console.log(JSON.stringify(r,null,2)))\"",
+    "report:jira": "node ./scripts/run-and-report.js",
+    "report:scrum6": "node ./scripts/run-and-report.js SCRUM-6",
+    "report:api": "node ./scripts/run-and-report.js SCRUM-6 --tags @api",
+    "report:smoke": "node ./scripts/run-and-report.js SCRUM-6 --tags @smoke"
   },
   "dependencies": {
     "dotenv": "^16.0.0",

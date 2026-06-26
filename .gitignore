@@ -1,8 +1,13 @@
 node_modules/
+# Environment files — NEVER commit real credentials
 .env
+.env.local
+.env.*.local
 .auth/
 auth/
 reports/
 test-results/
 allure-results/
 .vscode/
+# Multi-agent orchestration generated artifacts (commit selectively)
+orchestration/generated/

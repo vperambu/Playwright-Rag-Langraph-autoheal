@@ -1,0 +1,70 @@
+{
+  "key": "JIRA-1234",
+  "fields": {
+    "summary": "Login page — implement multi-factor authentication with remember-me flow",
+    "issuetype": { "name": "Story" },
+    "status":   { "name": "In Progress" },
+    "priority": { "name": "High" },
+    "labels":   ["authentication", "security", "ui"],
+    "reporter":  { "displayName": "Product Manager" },
+    "assignee":  { "displayName": "QA Lead" },
+    "created": "2025-01-15T09:00:00.000Z",
+    "updated": "2025-01-20T14:30:00.000Z",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "heading",
+          "attrs": { "level": 2 },
+          "content": [{ "type": "text", "text": "User Story" }]
+        },
+        {
+          "type": "paragraph",
+          "content": [{ "type": "text", "text": "As a registered user, I want to log in with MFA so that my account is protected even if my password is compromised." }]
+        },
+        {
+          "type": "heading",
+          "attrs": { "level": 2 },
+          "content": [{ "type": "text", "text": "Acceptance Criteria" }]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "User can enter email and password on the login page" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "System sends OTP to registered email after valid credentials" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "Invalid OTP shows error message 'Invalid code. Please try again'" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "OTP expires after 5 minutes and shows 'Code expired. Request a new code'" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "Remember Me checkbox persists session for 30 days" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "After 3 failed OTP attempts, account is locked for 15 minutes" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "Successful login redirects to dashboard" }] }] },
+            { "type": "listItem", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "Login form is accessible (WCAG 2.1 AA)" }] }] }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": { "level": 2 },
+          "content": [{ "type": "text", "text": "Technical Notes" }]
+        },
+        {
+          "type": "paragraph",
+          "content": [{ "type": "text", "text": "OTP must not be visible in browser console logs. Rate limiting applies: max 5 OTP requests per hour. Auth token expires after 24 hours." }]
+        }
+      ]
+    },
+    "comment": {
+      "comments": [
+        {
+          "body": {
+            "type": "doc",
+            "version": 1,
+            "content": [{
+              "type": "paragraph",
+              "content": [{ "type": "text", "text": "Edge case: user with no registered email should see 'MFA not configured' error. Also test with special characters in email field." }]
+            }]
+          }
+        }
+      ]
+    }
+  }
+}
